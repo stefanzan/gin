@@ -1,4 +1,4 @@
-gin (forked from ![gin](https://github.com/codegangsta/gin) )[![wercker status](https://app.wercker.com/status/f413ccbd85cfc4a58a37f03dd7aaa87e "wercker status")](https://app.wercker.com/project/bykey/f413ccbd85cfc4a58a37f03dd7aaa87e)
+gin (forked from [gin](https://github.com/codegangsta/gin) )[![wercker status](https://app.wercker.com/status/f413ccbd85cfc4a58a37f03dd7aaa87e "wercker status")](https://app.wercker.com/project/bykey/f413ccbd85cfc4a58a37f03dd7aaa87e)
 ========
 
 ## Motivation of Fork
