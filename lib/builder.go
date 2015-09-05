@@ -14,13 +14,15 @@ type Builder interface {
 }
 
 type builder struct {
-	dir      string
-	binary   string
-	errors   string
-	useGodep bool
+	dir          string
+	mainFilePath string
+	binary       string
+	errors       string
+	useGodep     bool
 }
 
-func NewBuilder(dir string, bin string, useGodep bool) Builder {
+//2015/09/05 stefan.zan: add mainFilePath
+func NewBuilder(dir string, mainFilePath string, bin string, useGodep bool) Builder {
 	if len(bin) == 0 {
 		bin = "bin"
 	}
@@ -31,8 +33,8 @@ func NewBuilder(dir string, bin string, useGodep bool) Builder {
 			bin += ".exe"
 		}
 	}
-
-	return &builder{dir: dir, binary: bin, useGodep: useGodep}
+	//2015/09/05 stefan.zan: add mainFilePath
+	return &builder{dir: dir, mainFilePath: mainFilePath, binary: bin, useGodep: useGodep}
 }
 
 func (b *builder) Binary() string {
@@ -48,7 +50,8 @@ func (b *builder) Build() error {
 	if b.useGodep {
 		command = exec.Command("godep", "go", "build", "-o", b.binary)
 	} else {
-		command = exec.Command("go", "build", "-o", b.binary)
+		//2015/09/05 stefan.zan:  modified: add mainFilePath
+		command = exec.Command("go", "build", "-o", b.binary, b.mainFilePath)
 	}
 	command.Dir = b.dir
 

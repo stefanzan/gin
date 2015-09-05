@@ -4,9 +4,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/codegangsta/cli"
-	"github.com/codegangsta/envy/lib"
-	"github.com/codegangsta/gin/lib"
+	gin "../gin/lib"
+
+	cli "github.com/codegangsta/cli"
+	envy "github.com/codegangsta/envy/lib"
 
 	"log"
 	"os"
@@ -58,6 +59,11 @@ func main() {
 			Name:  "godep,g",
 			Usage: "use godep when building",
 		},
+		//2015/09/05: stefan.zan: added to specify the path to main go file.
+		cli.StringFlag{
+			Name:  "main,m",
+			Usage: "the path to your main go file",
+		},
 	}
 	app.Commands = []cli.Command{
 		{
@@ -93,7 +99,8 @@ func MainAction(c *cli.Context) {
 		logger.Fatal(err)
 	}
 
-	builder := gin.NewBuilder(c.GlobalString("path"), c.GlobalString("bin"), c.GlobalBool("godep"))
+	//2015/09/05 steafan.zan: add  main to Builder.
+	builder := gin.NewBuilder(c.GlobalString("path"), c.GlobalString("main"), c.GlobalString("bin"), c.GlobalBool("godep"))
 	runner := gin.NewRunner(filepath.Join(wd, builder.Binary()), c.Args()...)
 	runner.SetWriter(os.Stdout)
 	proxy := gin.NewProxy(builder, runner)
@@ -169,7 +176,8 @@ func scanChanges(watchPath string, cb scanCallback) {
 				return nil
 			}
 
-			if filepath.Ext(path) == ".go" && info.ModTime().After(startTime) {
+			// 2015/09/05: stefan.zan: add .tmpl monitoring.
+			if (filepath.Ext(path) == ".go" || filepath.Ext(path) == ".tmpl") && info.ModTime().After(startTime) {
 				cb(path)
 				startTime = time.Now()
 				return errors.New("done")
