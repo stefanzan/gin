@@ -1,6 +1,15 @@
 gin (forked from [gin](https://github.com/codegangsta/gin) )[![wercker status](https://app.wercker.com/status/f413ccbd85cfc4a58a37f03dd7aaa87e "wercker status")](https://app.wercker.com/project/bykey/f413ccbd85cfc4a58a37f03dd7aaa87e)
 ========
 
+`gin` is a simple command line utility for live-reloading Go web applications. 
+Just run `gin` in your app directory and your web app will be served with 
+`gin` as a proxy. `gin` will automatically recompile your code when it 
+detects a change. Your app will be restarted the next time it receives an 
+HTTP request.
+
+`gin` adheres to the "silence is golden" principle, so it will only complain 
+if there was a compiler error or if you succesfully compile after an error.
+
 ## Motivation of Fork
 
  - my main go file is under src/main/main.go. Normally I use `go build -o bin/main main` which is not workable under the origianl gin.
@@ -13,14 +22,6 @@ gin (forked from [gin](https://github.com/codegangsta/gin) )[![wercker status](h
 
 ========
 
-`gin` is a simple command line utility for live-reloading Go web applications. 
-Just run `gin` in your app directory and your web app will be served with 
-`gin` as a proxy. `gin` will automatically recompile your code when it 
-detects a change. Your app will be restarted the next time it receives an 
-HTTP request.
-
-`gin` adheres to the "silence is golden" principle, so it will only complain 
-if there was a compiler error or if you succesfully compile after an error.
 
 ## Installation
 
