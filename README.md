@@ -16,7 +16,7 @@ Assuming you have a working Go environment and `GOPATH/bin` is in your
 `PATH`, `gin` is a breeze to install:
 
 ```shell
-go get github.com/codegangsta/gin
+go get github.com/stefanzan/gin
 ```
 
 Then verify that `gin` was installed correctly:
@@ -24,6 +24,16 @@ Then verify that `gin` was installed correctly:
 ```shell
 gin -h
 ```
+
+How to use it ? (2015/09/05)
+
+You can modify the `run.sh` to feed your own needs. Basically,
+```shell
+gin -a "8000" -p "3000" -m "main"
+```
+`main` is a folder under `src` folder, in which there is a main file named `main.go` . 
+
+
 
 ## Supporting Gin in Your Web app
 `gin` assumes that your web app binds itself to the `PORT` environment 
