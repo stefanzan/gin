@@ -1,4 +1,16 @@
-gin (forked from [!gin](https://github.com/codegangsta/gin) )[![wercker status](https://app.wercker.com/status/f413ccbd85cfc4a58a37f03dd7aaa87e "wercker status")](https://app.wercker.com/project/bykey/f413ccbd85cfc4a58a37f03dd7aaa87e)
+gin (forked from ![gin](https://github.com/codegangsta/gin) )[![wercker status](https://app.wercker.com/status/f413ccbd85cfc4a58a37f03dd7aaa87e "wercker status")](https://app.wercker.com/project/bykey/f413ccbd85cfc4a58a37f03dd7aaa87e)
+========
+
+## Motivation of Fork
+
+ - my main go file is under src/main/main.go. Normally I use `go build -o bin/main main` which is not workable under the origianl gin.
+
+ - Monitor all files under `src` folder.
+
+ - Monitor not only `.go` file, but also `.tmpl` file.
+
+ Thus I modified the command input a bit, in order to be able to pass the folder name for building and the src for watching any changes.
+
 ========
 
 `gin` is a simple command line utility for live-reloading Go web applications. 
