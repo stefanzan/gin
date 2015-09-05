@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	gin "../gin/lib"
+	gin "github.com/stefanzan/gin/lib"
 
 	cli "github.com/codegangsta/cli"
 	envy "github.com/codegangsta/envy/lib"
